@@ -1,6 +1,20 @@
 ``docopt`` creates *beautiful* command-line interfaces
 ======================================================================
 
+This is a 0.6.x fork of docopt, adding access to docopt internal 
+objects using ``docopt(... return_spec=true)``.
+
+Also adding an ``Option.meta`` attribute, to try to remember the original name
+of the value placeholder. ``Argument.name`` is already available.
+
+This is like the 'meta' attribute on ``optparse.Option``'s.
+Supported by docopt::
+
+  <Meta-or-Arg-Name>
+  META-OR-ARG-NAME
+
+----
+
 Video introduction to **docopt**: `PyCon UK 2012: Create *beautiful*
 command-line interfaces with Python <http://youtu.be/pXhcPJK5cMc>`_
 

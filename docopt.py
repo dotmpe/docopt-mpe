@@ -121,6 +121,8 @@ class ChildPattern(Pattern):
         pos, match = self.single_match(left)
         if match is None:
             return False, left, collected
+        if hasattr(self, 'meta'):
+            match.meta = self.meta
         left_ = left[:pos] + left[pos + 1:]
         same_name = [a for a in collected if a.name == self.name]
         if type(self.value) in (int, list):
@@ -185,28 +187,33 @@ class Command(Argument):
 
 class Option(ChildPattern):
 
-    def __init__(self, short=None, long=None, argcount=0, value=False):
+    def __init__(self, short=None, long=None, argcount=0, value=False, meta=None):
         assert argcount in (0, 1)
         self.short, self.long = short, long
         self.argcount, self.value = argcount, value
         self.value = None if value is False and argcount else value
+        self.meta = meta
 
     @classmethod
     def parse(class_, option_description):
         short, long, argcount, value = None, None, 0, False
         options, _, description = option_description.strip().partition('  ')
         options = options.replace(',', ' ').replace('=', ' ')
+        others = []
         for s in options.split():
             if s.startswith('--'):
                 long = s
             elif s.startswith('-'):
                 short = s
             else:
+                others.append(s)
                 argcount = 1
-        if argcount:
+        meta = None
+        if others or argcount:
             matched = re.findall('\[default: (.*)\]', description, flags=re.I)
+            meta = ( others[:argcount] if argcount > 1 else others[0] )
             value = matched[0] if matched else None
-        return class_(short, long, argcount, value)
+        return class_(short, long, argcount, value, meta)
 
     def single_match(self, left):
         for n, p in enumerate(left):
@@ -219,8 +226,8 @@ class Option(ChildPattern):
         return self.long or self.short
 
     def __repr__(self):
-        return 'Option(%r, %r, %r, %r)' % (self.short, self.long,
-                                           self.argcount, self.value)
+        return 'Option(%r, %r, %r, %r, %r)' % (self.short, self.long,
+                                           self.argcount, self.value, self.meta)
 
 
 class Required(ParentPattern):
@@ -490,7 +497,8 @@ class Dict(dict):
         return '{%s}' % ',\n '.join('%r: %r' % i for i in sorted(self.items()))
 
 
-def docopt(doc, argv=None, help=True, version=None, options_first=False):
+def docopt(doc, argv=None, help=True, version=None, options_first=False,
+        return_spec=False):
     """Parse `argv` based on command-line interface described in `doc`.
 
     `docopt` creates your command-line interface based on its
@@ -575,5 +583,8 @@ def docopt(doc, argv=None, help=True, version=None, options_first=False):
     extras(help, version, argv, doc)
     matched, left, collected = pattern.fix().match(argv)
     if matched and left == []:  # better error message if left?
-        return Dict((a.name, a.value) for a in (pattern.flat() + collected))
+        if return_spec:
+            return pattern, collected
+        else:
+            return Dict((a.name, a.value) for a in (pattern.flat() + collected))
     raise DocoptExit()
