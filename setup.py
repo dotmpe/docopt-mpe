@@ -4,14 +4,14 @@ from docopt import __version__
 
 
 setup(
-    name='docopt',
+    name='docopt-mpe',
     version=__version__,
-    author='Vladimir Keleshev',
-    author_email='vladimir@keleshev.com',
-    description='Pythonic argument parser, that will make you smile',
+    author='B. van Berkum',
+    author_email='dev@dotmpe.com',
+    description='docopt fork, see ReadMe',
     license='MIT',
     keywords='option arguments parsing optparse argparse getopt',
-    url='http://docopt.org',
+    url='http://github.com/dotmpe/docopt-mpe',
     py_modules=['docopt'],
     long_description=open('README.rst').read(),
     classifiers=[

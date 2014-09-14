@@ -13,6 +13,10 @@ Supported by docopt::
   <Meta-or-Arg-Name>
   META-OR-ARG-NAME
 
+This should enable a way to leverage some rudimentary validation or 
+input parsing of the values, by associating handlers to meta names.
+
+
 ----
 
 Video introduction to **docopt**: `PyCon UK 2012: Create *beautiful*
