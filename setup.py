@@ -5,6 +5,7 @@ from docopt import __version__
 
 
 pd = os.path.dirname(__file__)
+os.chdir(pd)
 
 setup(
     name='docopt-mpe',
@@ -16,7 +17,7 @@ setup(
     keywords='option arguments parsing optparse argparse getopt',
     url='http://github.com/dotmpe/docopt-mpe',
     py_modules=['docopt'],
-    long_description=open(os.path.join(pd, 'README.rst')).read(),
+    long_description=open('README.rst').read(),
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Topic :: Utilities',
