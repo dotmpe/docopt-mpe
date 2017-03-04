@@ -20,7 +20,7 @@ class PyTestCommand(TestCommand):
 
 
 setup(
-    name='docopt',
+    name='docopt-mpe',
     version=__version__,
     author='Vladimir Keleshev',
     author_email='vladimir@keleshev.com',

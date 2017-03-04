@@ -1,0 +1,8 @@
+
+- type: application/vnd.dotmpe.project
+  main: docopt-mpe
+  id: docopt-mpe
+  scripts:
+    test:
+      - pytest
+
