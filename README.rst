@@ -1,6 +1,24 @@
 ``docopt`` creates *beautiful* command-line interfaces
 ======================================================================
 
+This is a 0.6.x fork of docopt, adding access to docopt internal 
+objects using ``docopt(... return_spec=true)``.
+
+Also adding an ``Option.meta`` attribute, to try to remember the original name
+of the value placeholder. ``Argument.name`` is already available.
+
+This is like the 'meta' attribute on ``optparse.Option``'s.
+Supported by docopt::
+
+  <Meta-or-Arg-Name>
+  META-OR-ARG-NAME
+
+This should enable a way to leverage some rudimentary validation or 
+input parsing of the values, by associating handlers to meta names.
+
+
+----
+
 Video introduction to **docopt**: `PyCon UK 2012: Create *beautiful*
 command-line interfaces with Python <http://youtu.be/pXhcPJK5cMc>`_
 
@@ -87,7 +105,7 @@ Installation
 
 Use `pip <http://pip-installer.org>`_ or easy_install::
 
-    pip install docopt==0.6.1
+    pip install docopt==0.6.2
 
 Alternatively, you can just drop ``docopt.py`` file into your
 project--it is self-contained.
@@ -443,8 +461,9 @@ first release with stable API will be 1.0.0 (soon).  Until then, you
 are encouraged to specify explicitly the version in your dependency
 tools, e.g.::
 
-    pip install docopt==0.6.1
+    pip install docopt==0.6.2
 
+- 0.6.2 `Wheel <http://pythonwheels.com/>`_ support.
 - 0.6.1 Bugfix release.
 - 0.6.0 ``options_first`` parameter.
   **Breaking changes**: Corrected ``[options]`` meaning.
