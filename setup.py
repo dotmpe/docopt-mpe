@@ -1,4 +1,4 @@
-import os
+#import os
 from setuptools import setup
 #from setuptools.command.test import test as TestCommand
 
@@ -17,9 +17,6 @@ from docopt import __version__
 #        import pytest
 #        rcode = pytest.main(self.test_args)
 #        sys.exit(rcode)
-
-pd = os.path.dirname(__file__)
-os.chdir(pd)
 
 setup(
     name='docopt-mpe',
@@ -42,9 +39,9 @@ setup(
         'Programming Language :: Python :: 3.3',
         'License :: OSI Approved :: MIT License',
     ],
-    tests_require=[
-            'pytest',
-        ],
+#    tests_require=[
+#            'pytest',
+#        ],
 #    cmdclass={
 #            'test': PyTestCommand,
 #        }
