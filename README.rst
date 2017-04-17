@@ -19,6 +19,12 @@ input parsing of the values, by associating handlers to meta names.
 
 ----
 
+.. image:: https://travis-ci.org/docopt/docopt.svg?branch=master
+    :target: https://travis-ci.org/docopt/docopt
+
+.. image:: https://img.shields.io/pypi/v/docopt.svg
+    :target: https://pypi.python.org/pypi/docopt
+
 Video introduction to **docopt**: `PyCon UK 2012: Create *beautiful*
 command-line interfaces with Python <http://youtu.be/pXhcPJK5cMc>`_
 
@@ -110,7 +116,7 @@ Use `pip <http://pip-installer.org>`_ or easy_install::
 Alternatively, you can just drop ``docopt.py`` file into your
 project--it is self-contained.
 
-**docopt** is tested with Python 2.5, 2.6, 2.7, 3.2, 3.3 and PyPy.
+**docopt** is tested with Python 2.6, 2.7, 3.3, 3.4, 3.5 and PyPy.
 
 Testing
 ======================================================================
@@ -436,19 +442,14 @@ Porting ``docopt`` to other languages
 ======================================================================
 
 We think **docopt** is so good, we want to share it beyond the Python
-community!
+community! All official docopt ports to other languages can be found
+under the `docopt organization page <http://github.com/docopt>`_
+on GitHub.
 
-The following ports are available:
-
-- `Ruby port <http://github.com/docopt/docopt.rb>`_
-- `CoffeeScript port <http://github.com/docopt/docopt.coffee>`_
-- `Lua port <http://github.com/docopt/docopt.lua>`_
-- `PHP port <http://github.com/docopt/docopt.php>`_
-
-But you can always create a port for your favorite language!  You are
-encouraged to use the Python version as a reference implementation.  A
-Language-agnostic test suite is bundled with `Python implementation
-<http://github.com/docopt/docopt>`_.
+If your favourite language isn't among then, you can always create a
+port for it! You are encouraged to use the Python version as a
+reference implementation.  A Language-agnostic test suite is bundled
+with `Python implementation <http://github.com/docopt/docopt>`_.
 
 Porting discussion is on `issues page
 <http://github.com/docopt/docopt/issues>`_.
@@ -463,7 +464,7 @@ tools, e.g.::
 
     pip install docopt==0.6.2
 
-- 0.6.2 `Wheel <http://pythonwheels.com/>`_ support.
+- 0.6.2 Bugfix release.
 - 0.6.1 Bugfix release.
 - 0.6.0 ``options_first`` parameter.
   **Breaking changes**: Corrected ``[options]`` meaning.

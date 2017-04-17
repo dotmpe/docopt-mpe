@@ -11,7 +11,7 @@ import re
 
 
 __all__ = ['docopt']
-__version__ = '0.6.post3'
+__version__ = '0.6.2'
 
 
 class DocoptLanguageError(Exception):
